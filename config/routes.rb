@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :reviews, only: [:index, :show]
+  resources :reviews, only: [:index, :create]
   resources :trails, only: [:index, :show]
 
   # SESSIONS
