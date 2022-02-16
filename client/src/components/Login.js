@@ -40,9 +40,9 @@ function Login({ onLogin }) {
       )}
       </div>
       <div className="Video">
-          <video autoPlay loop>
-              <source src={bgImage} type="video/mp4" />
-          </video>
+        <video autoPlay loop>
+          <source src={bgImage} type="video/mp4" />
+        </video>
     </div>
     </div>
   );
