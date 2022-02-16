@@ -28,9 +28,10 @@ ActiveRecord::Schema.define(version: 2022_02_16_174159) do
 
   create_table "trails", force: :cascade do |t|
     t.string "name"
-    t.string "location"
+    t.string "city"
+    t.string "state"
+    t.text "description"
     t.string "image_url"
-    t.float "avg_rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
