@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Button, Container } from 'react-bootstrap'
 
-function Review({ review }) {
+function Review({ review, trail }) {
   const user = review.user
   
   return (
