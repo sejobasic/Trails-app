@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
-// import { Routes, Route} from 'react-router-dom'
+import TrailCards from "./components/TrailCards";
+import Footer from "./components/Footer";
+import Main from "./components/Main";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
@@ -20,9 +22,12 @@ function App() {
 
   if (!user) return <Login onLogin={setUser} />;
 
+
   return (
     <>
-      <NavBar  />
+      <NavBar user={user} setUser={setUser} />
+      <Main />
+      <Footer />
       <main>
       </main>
     </>

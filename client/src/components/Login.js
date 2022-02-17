@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import { Button, Container } from 'react-bootstrap'
 import bgImage from '../video/background.mp4'
+import logo1  from '../assets/logo3.png';
 import '../App.css'
 
 
@@ -14,30 +15,15 @@ function Login({ onLogin }) {
     <div className="submit-container">
       <div className="d-flex justify-content-center align-items-center">
       {showLogin ? (
-        <>
-          <LoginForm onLogin={onLogin} />
-          <p>
-          <Container id="sign_in">
-            Don't have an account? &nbsp;
-            <Button variant="primary" onClick={() => setShowLogin(false)}>
-              Sign Up
-            </Button>
-            </Container>
-          </p>
-        </>
+        <LoginForm onLogin={onLogin} setShowLogin={setShowLogin} />
       ) : (
-        <>
-          <SignUpForm onLogin={onLogin} />
-          <p>
-          <Container id="sign_in">
-            Already have an account? &nbsp;
-            <Button onClick={() => setShowLogin(true)}>
-              Log In
-            </Button>
-            </Container>
-          </p>
-        </>
+        <SignUpForm onLogin={onLogin} setShowLogin={setShowLogin} />
       )}
+      </div>
+      
+      {/* logo image and background vid below */}
+      <div className="logo-img">
+        <img src={logo1}/>
       </div>
       <div className="Video">
         <video autoPlay loop>
