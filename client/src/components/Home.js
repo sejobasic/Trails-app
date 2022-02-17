@@ -1,8 +1,14 @@
 import React from 'react'
+import TrailCards from './TrailCards'
 
-function Home() {
+function Home({ trails }) {
+  
   return (
-    <div>Home</div>
+    <div>
+      {trails.map((trail) => {
+        return <TrailCards key={trail.id} trail={trail} />
+      })}
+    </div>
   )
 }
 
