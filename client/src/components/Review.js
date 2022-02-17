@@ -5,7 +5,7 @@ function Review({ review, trail }) {
   const user = review.user
 
   return (
-    <Container className="card-container">
+    <Container className="review-container">
     <Card className="card" style={{width: '80%'}}>
     <Card.Header as="h5">{user.username}</Card.Header>
     <Card.Body>

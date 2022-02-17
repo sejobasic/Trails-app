@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.card-container {
-  padding-top: 50px;
-}
-
 #navbar {
   background-color: #f1f1f1 !important;
 }
@@ -102,13 +98,14 @@ form {
   opacity: 1;
 }
 
-.carousel-item {
-  height: 35rem;
-}
-
+/* CAROUSEL */
 .carousel img {
   width: 100%;
   object-fit: cover;
+}
+
+.carousel-item {
+  height: 35rem;
 }
 
 .carousel-caption {
@@ -129,12 +126,42 @@ form {
   margin: 0 auto;
   padding-bottom: 1rem;
 }
-/* .carousel-container {
-  width:auto;
-  text-align:center;
-  padding:60px;
-  object-fit: cover;
-} */
+
+/* TRAIL CARDS */
+.card-container {
+  padding-top: 50px;
+  display: flex;
+
+}
+
+.card {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 25px;
+}
+
+.card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-image {
+  height: 200px;
+}
+
+.card-title {
+  color: black;
+}
+
+.card-text {
+  color: gray;
+}
+
+/* REVIEW CARDS */
+.review-container {
+  padding-top: 50px;
+}
+
+
 
 /* unused CSS */
 
@@ -158,3 +185,10 @@ form {
   top: 0;
   left: 0; */
 /* } */
+
+/* .carousel-container {
+  width:auto;
+  text-align:center;
+  padding:60px;
+  object-fit: cover;
+} */
