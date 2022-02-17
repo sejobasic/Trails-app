@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import TrailCards from './TrailCards'
 import MultiCarousel from './MultiCarousel';
-import { Button, Col, Card, Row, Container, Carousel } from 'react-bootstrap';
+import { Form, Button, Container, Carousel } from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function Home({ trails }) {
@@ -32,9 +32,16 @@ function Home({ trails }) {
   
   return (
     <div>
+
       <Carousel className="carousel-container" >
         {carouselItems}
       </Carousel>
+      <div className="searchbar" style={{position: 'absolute', top: '28rem', left: '40%', right: '35%'}}>
+        <Form.Group>
+          {/* <Form.Label style={{fontSize: '1rem'}}>Search for Trails</Form.Label> */}
+          <Form.Control style={{height: '3rem', width: '80%', fontSize: '1.3rem', borderRadius: '25px'}} type='search' placeholder='Search by city, state, or trail'/>
+        </Form.Group>
+      </div>
 
       <Container style={{paddingTop: '5rem'}}>
       <h2>Local Favorites</h2>

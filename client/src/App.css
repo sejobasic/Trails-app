@@ -131,21 +131,17 @@ form {
 .card-container {
   padding-top: 50px;
   display: flex;
-
 }
 
-.card {
+/* .card {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease-in-out;
   border-radius: 25px;
-}
+} */
 
 .card:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.card-image {
-  height: 200px;
+  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
+  transform: scale(1.05);
 }
 
 .card-title {
@@ -161,7 +157,15 @@ form {
   padding-top: 50px;
 }
 
+.carousel-container {
+  overflow: true;
+}
 
+/* SEARCHBAR */
+#searchbar {
+  margin: auto;
+
+}
 
 /* unused CSS */
 
