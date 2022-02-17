@@ -14,6 +14,7 @@ function Review({ review, trail }) {
       <Card.Text>
         {review.text}
       </Card.Text>
+      {review.rating}
       {/* <Button as={Link} to={`/trails/${state}/${city}/${name}`} variant="primary">View Trail</Button> */}
     </Card.Body>
     </Card>
