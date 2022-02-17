@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import TrailCards from './TrailCards'
+import MultiCarousel from './MultiCarousel';
 import { Button, Col, Card, Row, Container, Carousel } from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function Home({ trails }) {
 
-  const mappedTrails = trails.map(trail => {
-    const city = trail.city
+  const carouselItems = trails.map(trail => {
+    const city = trail.city.split(' ').join('');
     const state = trail.state
     const name = trail.name.split(' ').join('');
 
@@ -24,17 +25,21 @@ function Home({ trails }) {
       </Carousel.Item>
     )
   })
+
+  // const trailCards = trails.map((trail) => {
+  //   return <TrailCards key={trail.id} trail={trail} />
+  // })
   
   return (
     <div>
       <Carousel className="carousel-container" >
-        {mappedTrails}
+        {carouselItems}
       </Carousel>
 
-      
-      {trails.map((trail) => {
-        return <TrailCards key={trail.id} trail={trail} />
-      })}
+      <Container style={{paddingTop: '5rem'}}>
+      <h2>Local Favorites</h2>
+      <MultiCarousel trails={trails}/>
+      </Container>
     </div>
   )
 }

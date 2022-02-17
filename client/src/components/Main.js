@@ -16,7 +16,7 @@ function Main() {
     }, []);
 
     const trailPageRoutes = trails.map(trail => {
-      const city = trail.city
+      const city = trail.city.split(' ').join('');
       const state = trail.state
       const name = trail.name.split(' ').join('');
 
