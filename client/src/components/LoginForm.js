@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Form, Button} from 'react-bootstrap'
 import '../App.css'
 
-function LoginForm({onLogin}){
+function LoginForm({onLogin, setShowLogin}){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -54,9 +54,13 @@ function LoginForm({onLogin}){
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
-            <Button color="black" variant="primary" type="submit">
+          <Button color="black" variant="primary" type="submit" style={{marginTop: '10px', marginBottom: '2rem'}}>
               {isLoading ? "Loading..." : "Login"}
-            </Button>
+          </Button>
+              <p>Don't have an account?</p>
+          <Button variant="primary" onClick={() => setShowLogin(false)}>
+              Sign Up
+          </Button>
         </Form>
       </div>
     </div>

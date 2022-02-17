@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Form, Button} from 'react-bootstrap'
 import '../App.css'
 
-function SignUpForm({onLogin}) {
+function SignUpForm({onLogin, setShowLogin}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -39,49 +39,53 @@ function SignUpForm({onLogin}) {
     return (
       <div className="form-container">
         <div className="d-grid age-100 justify-content-center align-items-center" id="form-container">
-      <Form className="text-center rounded p-4 p-sm-3" onSubmit={handleSubmit} id="sign-in-form">
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control
-            type="text"
-            id="username"
-            autoComplete="off"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="password">Password Confirmation</Form.Label>
-          <Form.Control
-            type="password"
-            id="password_confirmation"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-            autoComplete="current-password"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="imageUrl">Profile Image</Form.Label>
-          <Form.Control
-            type="text"
-            id="imageUrl"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-          />
-        </Form.Group>  
-        <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
-      </Form>
-      </div>
+          <Form className="text-center rounded p-4 p-sm-3" onSubmit={handleSubmit} id="sign-in-form">
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="username">Username</Form.Label>
+              <Form.Control
+                type="text"
+                id="username"
+                autoComplete="off"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="password">Password</Form.Label>
+              <Form.Control
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="current-password"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="password">Password Confirmation</Form.Label>
+              <Form.Control
+                type="password"
+                id="password_confirmation"
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+                autoComplete="current-password"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="imageUrl">Profile Image</Form.Label>
+              <Form.Control
+                type="text"
+                id="imageUrl"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+              />
+            </Form.Group>  
+            <Button type="submit" style={{marginTop: '10px', marginBottom: '2rem'}}>{isLoading ? "Loading..." : "Sign Up"}</Button>
+                <p>Already have an account? </p>
+            <Button onClick={() => setShowLogin(true)}>
+                Log In
+            </Button>
+          </Form>
+        </div>
       </div>
     );
 }
