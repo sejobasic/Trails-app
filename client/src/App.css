@@ -2,9 +2,8 @@
   text-align: center;
 }
 
-.card-container{
+.card-container {
   padding-top: 50px;
-  
 }
 
 #navbar {
@@ -16,24 +15,24 @@ form {
   box-shadow: 5px 5px 5px rgba(0.3, 0.3, 0.3, 0.3);
 }
 
-#form-container{
+#form-container {
   place-items: center;
   margin-top: 160px;
 }
 
-#sign-in-form{
+#sign-in-form {
   max-width: 400px;
 }
 
-#sign_in{
-  padding-left:30px;
-  padding-right:30px;
+#sign_in {
+  padding-left: 30px;
+  padding-right: 30px;
   margin-top: 160px;
-} 
+}
 
-#navbar{
-  padding-left:30px;
-  padding-right:30px;
+#navbar {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 #trails {
@@ -41,31 +40,33 @@ form {
   grid-template-columns: repeat(4, 1fr);
 }
 
-.logo-img img{
+.logo-img img {
   display: block;
   position: relative;
   top: 100px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
-  height:100px;
-  width:100px;
+  height: 100px;
+  width: 100px;
 }
 
-.nav-logo img{
-  height:50px;
-  width:50px;
+.nav-logo img {
+  height: 50px;
+  width: 50px;
 }
 
-.btn-primary, .btn-primary:active, .btn-primary:visited {
-  background-color: #483D8B !important;
-  border-color: #483D8B !important;
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #483d8b !important;
+  border-color: #483d8b !important;
 }
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: #6c62ad !important;
 }
 
-.App video{
+.App video {
   position: absolute;
   z-index: -1;
   top: 0;
@@ -81,7 +82,6 @@ form {
   z-index: -2;
 }
 
-
 /* The overlay effect - lays on top of the container and over the image */
 .overlay {
   position: absolute;
@@ -90,8 +90,8 @@ form {
   background: rgba(0, 0, 0, 0.5); /* Black see-through */
   color: #f1f1f1;
   width: 100%;
-  transition: .5s ease;
-  opacity:0;
+  transition: 0.5s ease;
+  opacity: 0;
   color: white;
   font-size: 20px;
   padding: 20px;
@@ -102,21 +102,44 @@ form {
   opacity: 1;
 }
 
+.carousel-item {
+  height: 35rem;
+}
 
-.carousel-container {
+.carousel img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 38%;
+}
+
+.carousel-caption h3 {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.carousel-caption p {
+  background: rgba(0, 0, 0, 0.5);
+  width: 70%;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+/* .carousel-container {
   width:auto;
   text-align:center;
   padding:60px;
   object-fit: cover;
-}
-
-
-
+} */
 
 /* unused CSS */
 
 /* .form-container { */
-  /* min-height: 100vh;
+/* min-height: 100vh;
   width: 100%;
   position: relative;
   background-color: #3d405b;
@@ -129,7 +152,7 @@ form {
   left: 0; */
 /* } */
 /* .submit-container{ */
-  /* width: 100%;
+/* width: 100%;
   height: auto;
   position: fixed;
   top: 0;
