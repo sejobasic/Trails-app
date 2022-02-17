@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Button, Container } from 'react-bootstrap'
+import { Button, Col, Card, Row, Container, Form } from 'react-bootstrap';
 import Review from './Review'
 import TrailCards from './TrailCards'
+import ReviewCard from './ReviewCard'
+import '../App.css'
+
 
 function TrailPage({ trailId }) {
   const [trail, setTrail] = useState({});
@@ -18,6 +21,7 @@ function TrailPage({ trailId }) {
     .then(r => r.json())
     .then (trail => {
       setTrail(trail)
+      console.log(trail)
       setReviews(trail.reviews)
       setLoaded(true)
     })
@@ -57,10 +61,24 @@ if (!loaded) {
   return (
     <>
     <div>
-      <TrailCards trail={trail}/>
-      
+      {/* <TrailCards trail={trail}/> */}
+      {/* <ReviewCard trail={trail}/> */}
+      <Container className="card-container">
+        <Card className="bg-dark text-white">
+          <Card.Img className="image-review" src={trail.image_url} alt="Card image" />
+          <Card.ImgOverlay className="overlay" >
+            <Card.Title>{trail.name}</Card.Title>
+            <Card.Text>{trail.city}, {trail.state}</Card.Text>
+            <Card.Text>
+            {trail.description}
+            </Card.Text>
+          </Card.ImgOverlay>
+        </Card>
+      </Container>
+
+
       {reviews.map(review => {
-        return <Review key={review.id} review={review}/>
+        return <Review key={review.id} review={review} trail={trail}/>
       })}
 
     <Container className="card-container">
