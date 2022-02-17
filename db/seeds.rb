@@ -12,6 +12,12 @@ User.create([
     password: "abc123",
     password_confirmation: "abc123",
     bio: "Hi"
+  },
+  {
+    username: "Sejo",
+    password: "abc123",
+    password_confirmation: "abc123",
+    bio: "Yoooooo"
   }
 ])
 
@@ -70,13 +76,15 @@ Trail.create([
 puts " Seeding reviews..."
 Review.create([
   {
-    text: "Noice", 
+    summary: "Noice",
+    text: "Lovely place", 
     rating: 5.0, 
-    user_id: 1, 
+    user_id: 2, 
     trail_id: 1
   },
-  {
-    text: "Aight. Kinda muddy",
+  { 
+    summary: "Aight. Kinda muddy",
+    text: "slipped and ate chocolate",
     rating: 2.0,
     user_id: 1,
     trail_id: 1
