@@ -28,8 +28,6 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <Main />
       <Footer />
-      <main>
-      </main>
     </>
   );
 }
