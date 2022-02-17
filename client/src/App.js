@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router } from 'react-router-dom'
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import TrailCards from "./components/TrailCards";
@@ -24,11 +25,11 @@ function App() {
 
 
   return (
-    <>
+    <Router>
       <NavBar user={user} setUser={setUser} />
       <Main />
       <Footer />
-    </>
+    </Router>
   );
 }
 

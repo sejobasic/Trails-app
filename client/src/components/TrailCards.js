@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import TrailPage from './TrailPage'
 import { Button, Col, Card, Row, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TrailCards({trail}) {
-    
+  const city = trail.city
+  const state = trail.state
+  const name = trail.name.split(' ').join('');
 
 return (
   <Container className="card-container">
@@ -17,7 +19,7 @@ return (
       <Card.Text>
         {trail.description}
       </Card.Text>
-      <Button variant="primary">View Trail</Button>
+      <Button as={Link} to={`/trails/${state}/${city}/${name}`} variant="primary">View Trail</Button>
     </Card.Body>
     </Card>
   </Container>

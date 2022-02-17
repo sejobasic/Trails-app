@@ -1,5 +1,7 @@
 import React, { useState, useEffect }from 'react'
-import TrailCards from './TrailCards'
+import { Route, Routes } from 'react-router-dom'
+import Home from './Home'
+import TrailPage from './TrailPage'
 
 function Main() {
     const [trails, setTrails] = useState([]);
@@ -13,12 +15,29 @@ function Main() {
       // .then((items) => console.log(items));
     }, []);
 
+    const trailPageRoutes = trails.map(trail => {
+      const city = trail.city
+      const state = trail.state
+      const name = trail.name.split(' ').join('');
+
+      return (
+        <Route
+          key={trail.id}
+          path={`/trails/${state}/${city}/${name}`}
+          element={<TrailPage trailId={trail.id}/>}
+        />
+      )
+    })
 
   return (
     <div>
-    {trails.map((trail) => {
-    return <TrailCards key={trail.id} trail={trail} />
-    })}
+      <Routes>
+        <Route
+          path='/'
+          element={<Home trails={trails}/>}
+        />
+        {trailPageRoutes}
+      </Routes>
     </div>
 )
 }
