@@ -10,8 +10,8 @@ function TrailCards({trail}) {
   const name = trail.name.split(' ').join('');
 
 return (
-    <Card as={Link} to={`/trails/${state}/${city}/${name}`} style={{ width: '90%', height: '15rem', textDecoration: 'none' }}>
-      <Card.Img style={{width: '100%', height: '7rem', objectFit: 'cover'}}variant="top" src={trail.image_url} />
+    <Card as={Link} to={`/trails/${state}/${city}/${name}`} style={{ width: '90%', height: '15.5rem', textDecoration: 'none' }}>
+      <Card.Img style={{width: '100%', height: '8rem', objectFit: 'cover'}}variant="top" src={trail.image_url} />
       <Card.Body>
         <Card.Title style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{trail.name}</Card.Title>
         <Card.Text>
