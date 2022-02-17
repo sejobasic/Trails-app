@@ -1,6 +1,5 @@
 import React from 'react'
 import Carousel from 'react-multi-carousel';
-import { Container } from 'react-bootstrap'
 import 'react-multi-carousel/lib/styles.css';
 
 import TrailCards from './TrailCards'
@@ -25,22 +24,23 @@ const responsive = {
   }
 };
 
+
 function MultiCarousel({trails}) {
   const trailCards = trails.map((trail) => {
     return <TrailCards key={trail.id} trail={trail} />
   })
 
   return (
-
     <Carousel 
       responsive={responsive}
       autoPlay={false}
+      autoPlaySpeed={50000}
       infinite={true}
       renderButtonGroupOutside={true}
+      containerClass='carousel-container'
     >
       {trailCards}
     </Carousel>
-
   )
 }
 
