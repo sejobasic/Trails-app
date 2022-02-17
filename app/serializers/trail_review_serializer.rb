@@ -1,7 +1,7 @@
 class TrailReviewSerializer < ActiveModel::Serializer
-  attributes :id, :name, :city, :state, :description, :image_url, :avg_rating
+  attributes :id, :name, :city, :state, :description, :image_url, :rating
 
-  def avg_rating
+  def rating
     self.object.average_rating
   end
 
