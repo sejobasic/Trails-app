@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Card, Row, Container, Form } from 'react-bootstrap';
+import { Button, Col, Card, Row, Container, Form, Image } from 'react-bootstrap';
 import Review from './Review'
 import TrailCards from './TrailCards'
-import ReviewCard from './ReviewCard'
 import { Rating } from 'react-simple-star-rating'
 import '../App.css'
 
@@ -112,10 +111,10 @@ const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rg
     <div>
       {/* <TrailCards trail={trail}/> */}
       {/* <ReviewCard trail={trail}/> */}
-      <Container className="card-container">
+      {/* <Container className="trail-card-container">
         <Card className="bg-dark text-white">
           <Card.Img className="image-review" src={trail.image_url} alt="Card image" />
-          <Card.ImgOverlay className="overlay" >
+          <Card.ImgOverlay  >
             <Card.Title id="page-card">{trail.name}</Card.Title>
             <Card.Text id="page-card">{trail.city}, {trail.state}</Card.Text>
             <Card.Text id="page-card">
@@ -123,10 +122,25 @@ const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rg
             </Card.Text>
           </Card.ImgOverlay>
         </Card>
-      </Container>
+      </Container> */}
+    <Card >
+      <Image
+      className="trail-image"
+      src={trail.image_url}
+      rounded={true}
+       />
+       <Card.ImgOverlay  >
+            <Card.Title id="page-card">{trail.name}</Card.Title>
+            <Card.Text id="page-card">{trail.city}, {trail.state}</Card.Text>
+            <Card.Text id="page-card">
+            {trail.description}
+            </Card.Text>
+          </Card.ImgOverlay>
+    </Card>
 
 
-      <iframe src={mapURL} width="100%" height="300" style={{border:0}} allowfullscreen></iframe>
+
+      <iframe src={mapURL} width="100%" height="300" style={{border:0}} allowFullscreen></iframe>
 
 
       {reviews.map(review => {

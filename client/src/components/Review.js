@@ -36,7 +36,11 @@ function Review({ review, setReviews }) {
       <Card.Text>
         {review.text}
       </Card.Text>
-      {review.rating}
+      <Rating
+      allowHover={false}
+      ratingValue={review.rating * 20}
+      fillColor={"#483d8b"}
+       />
       <Button id='delete-2' size="sm" onClick={() => handleDelete(review.id)}>Remove Comment</Button> 
       {errors ?
         errors.map(e => {
