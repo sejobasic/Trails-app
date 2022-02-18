@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import TrailCards from "./components/TrailCards";
-import Footer from "./components/Footer";
 import Main from "./components/Main";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "slick-carousel/slick/slick.css"; 
@@ -30,7 +29,6 @@ function App() {
     <Router>
       <NavBar user={user} setUser={setUser} />
       <Main user={user}/>
-      <Footer />
     </Router>
   );
 }
