@@ -2,8 +2,9 @@ import React, { useState, useEffect }from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import TrailPage from './TrailPage'
+import FavoritesPage from './FavoritesPage'
 
-function Main() {
+function Main({ user }) {
     const [trails, setTrails] = useState([]);
 
     // gets all
@@ -32,6 +33,10 @@ function Main() {
   return (
     <div>
       <Routes>
+        <Route
+          path='/favorites'
+          element={<FavoritesPage user={user}/>}
+        />
         <Route
           path='/'
           element={<Home trails={trails}/>}
