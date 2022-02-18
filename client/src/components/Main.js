@@ -4,6 +4,7 @@ import Home from './Home'
 import TrailPage from './TrailPage'
 import FavoritesPage from './FavoritesPage'
 
+
 function Main({ user }) {
     const [trails, setTrails] = useState([]);
 
