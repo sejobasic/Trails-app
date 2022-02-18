@@ -35,7 +35,11 @@ function Review({ review, trail, handleDelete }) {
       <Card.Text>
         {review.text}
       </Card.Text>
-      {review.rating}
+      <Rating
+      allowHover={false}
+      ratingValue={review.rating * 20}
+      fillColor={"#483d8b"}
+       />
       <Button id='delete-2' size="sm" onClick={() => handleDelete(review.id)}>Remove Comment</Button> 
       {/* <Button as={Link} to={`/trails/${state}/${city}/${name}`} variant="primary">View Trail</Button> */}
     </Card.Body>
