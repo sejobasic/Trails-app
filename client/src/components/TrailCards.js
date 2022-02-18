@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Card, Container} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+import { Rating } from 'react-simple-star-rating'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function TrailCards({trail, regex}) {
+function TrailCards({trail, regex, review}) {
   const [favorited, setFavorited] = useState(false);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ return (
     type='button'
     alt={route}
     onClick={e => {
-      if (e.target.className !== 'heart') {
+      if (e.target.id !== 'heart') {
         window.location.href=route
       }
     }}
@@ -37,10 +38,10 @@ return (
       height: '15.5rem', 
       textDecoration: 'none' 
       }}>
-        <div className='heart' onClick={e => setFavorited(!favorited)}>
+        <div onClick={e => setFavorited(!favorited)}>
           {favorited ?
-            '❤️' :
-            '♡'
+            <i id="heart" className="fa-solid fa-heart"></i> :
+            <i id="heart" className="fa-regular fa-heart"></i>
           }
         </div>
       <Card.Img style={{
@@ -62,7 +63,13 @@ return (
           {trail.city}, {trail.state}
         </Card.Text>
         <Card.Text>
-          Rating: {trail.rating}
+          Rating: <Rating 
+          className="star-rating"
+          allowHover={false}
+          fillColor={"#483d8b"}
+          ratingValue={trail.rating * 20}
+          size={20}
+          />
         </Card.Text>
       </Card.Body>
     </Card>

@@ -101,6 +101,48 @@ form {
   min-height: 100px;
   height: 30rem;
 }
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  margin-top: 20px;
+  height: 92%;
+  transition: 0.5s ease;
+  opacity: 0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+
+}
+.star-rating{
+margin-bottom: 4px;
+}
+
+.animated-card:hover {
+  transform: scale(1.05);
+}
+
+#heart {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: #483d8b;
+}
+
+#heart:hover {
+  transform: scale(1.3);
+}
+
+
+/* When you mouse over the container, fade in the overlay title */
+.overlay:hover{
+  opacity: 1;
+}
 
 /* .footer {
   background-color: rgb(235, 231, 231);
@@ -164,7 +206,7 @@ form {
   /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
   /* transform: scale(.05); */
 /* } */
-
+}
 .heart {
   position: absolute;
   right: 1rem;
