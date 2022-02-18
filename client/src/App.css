@@ -91,8 +91,11 @@ form {
   color: white;
   font-size: 20px;
   padding: 20px;
-  text-align: bottom;
+  text-align: center;
+
 }
+
+
 /* When you mouse over the container, fade in the overlay title */
 .container:hover .overlay {
   opacity: 1;

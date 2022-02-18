@@ -3,6 +3,7 @@ import { Button, Col, Card, Row, Container, Form } from 'react-bootstrap';
 import Review from './Review'
 import TrailCards from './TrailCards'
 import ReviewCard from './ReviewCard'
+import { Rating } from 'react-simple-star-rating'
 import '../App.css'
 
 
@@ -10,11 +11,18 @@ function TrailPage({ trailId }) {
   const [trail, setTrail] = useState({});
   const [reviews, setReviews] = useState({});
   const [loaded, setLoaded] = useState(false);
+  const [rating, setRating] = useState(0)
   const [form, setForm] = useState({
     summary: '',
     text: '',
     rating: 5
   })
+
+  const handleRating = (rate: number) => {
+    setRating(rate)
+    console.log(rate)
+  }
+
 
   useEffect(() => {
     fetch(`/trails/${trailId}`)
@@ -32,6 +40,7 @@ function TrailPage({ trailId }) {
       ...form, 
       [e.target.name]: e.target.value
     })
+    setRating(rating)
   }
 
   const handleSubmit = (e) => {
@@ -82,19 +91,46 @@ if (!loaded) {
       })}
 
     <Container className="card-container">
-      <Form style={{padding: '2rem', width: '80%', boxShadow: 'none', border: 'solid', borderColor: 'lightgray', borderRadius: '5px'}}>
+      <Form 
+        style={
+          {
+            padding: '2rem', 
+            width: '80%', 
+            boxShadow: 'none', 
+            border: 'solid', 
+            borderColor: 'lightgray', 
+            borderRadius: '5px'
+          }}>
         <Form.Group className="mb-3" controlId="formSummary">
           <Form.Label><h3>Write a Review</h3></Form.Label>
-          <Form.Control type="summary" name="summary" placeholder="Write a summary" value={form.summary} onChange={e => handleOnChange(e)} />
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="formReview">
-          <Form.Control as="textarea" rows={5} type="review" name="text" placeholder="Write your review" value={form.text} onChange={e => handleOnChange(e)} />
+          <Form.Control 
+            as="textarea" 
+            rows={5} 
+            type="review" 
+            name="text" 
+            placeholder="Write your review" 
+            value={form.text} 
+            onChange={e => handleOnChange(e)} 
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Control type="number" name="rating" value={form.rating} onChange={e => handleOnChange(e)} />
+        <Rating 
+          onClick={handleRating} 
+          // ratingValue={rating} 
+          initialValue={0}
+          fillColor={"#483d8b"}
+          type="number" 
+          name="rating" 
+          value={form.rating} 
+          onChange={e => handleOnChange(e)}
+        />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}>
+        <Button 
+          variant="primary" 
+          type="submit" 
+          onClick={(e) => handleSubmit(e)}>
           Submit
         </Button>
       </Form>
