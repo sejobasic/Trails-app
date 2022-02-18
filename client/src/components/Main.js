@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import TrailPage from './TrailPage'
 
+
 function Main() {
     const [trails, setTrails] = useState([]);
 
