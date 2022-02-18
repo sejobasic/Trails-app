@@ -11,6 +11,7 @@ function TrailPage({ trailId }) {
   const [trail, setTrail] = useState({});
   const [reviews, setReviews] = useState({});
   const [loaded, setLoaded] = useState(false);
+  const [errors, setErrors] = useState([]);
   const [rating, setRating] = useState(0)
   const [form, setForm] = useState({
     summary: '',
@@ -66,10 +67,17 @@ function TrailPage({ trailId }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newReview)
-    })
-    .then(r => r.json())
-    .then(newReview => {
-      setReviews([...reviews, newReview]);
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then(newReview => {
+          setReviews([...reviews, newReview]);
+          setErrors([]);
+        });
+      } else {
+        r.json().then(err => {
+          setErrors(err.errors);
+        });
+      }
     })
   }
 
@@ -159,6 +167,12 @@ const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rg
           onChange={e => handleOnChange(e)} 
         />
         </Form.Group>
+        {errors ?
+          errors.map(e => {
+          return (<p className='errors' key={e}>{e}</p>)
+          }) :
+          null
+        }
         <Button 
           variant="primary" 
           type="submit" 
