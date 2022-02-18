@@ -11,17 +11,18 @@ function TrailPage({ trailId }) {
   const [trail, setTrail] = useState({});
   const [reviews, setReviews] = useState({});
   const [loaded, setLoaded] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const [reviewErrors, setReviewErrors] = useState([]);
   const [rating, setRating] = useState(0)
   const [form, setForm] = useState({
     summary: '',
     text: '',
-    rating: 3
+    rating: 0
   })
 
 
-  const handleRating = (rate: number) => {
+  const handleRating = (rate) => {
     setRating(rate)
-    console.log(rate)
     setForm({
       ...form, 
        rating: rate / 20
@@ -34,7 +35,6 @@ function TrailPage({ trailId }) {
     .then(r => r.json())
     .then (trail => {
       setTrail(trail)
-      console.log(trail)
       setReviews(trail.reviews)
       setLoaded(true)
     })
@@ -66,25 +66,36 @@ function TrailPage({ trailId }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newReview)
-    })
-    .then(r => r.json())
-    .then(newReview => {
-      setReviews([...reviews, newReview]);
-    })
-  }
-
-
-  function handleDelete(id) {
-    fetch(`/reviews/${id}`, {
-      method: "DELETE",
     }).then((r) => {
       if (r.ok) {
-        setReviews((reviews) =>
-        reviews.filter((review) => review.id !== id)
-        );
+        r.json().then(newReview => {
+          setReviews([...reviews, newReview]);
+          setErrors([]);
+        });
+      } else {
+        r.json().then(err => {
+          setErrors(err.errors);
+        });
       }
-    });
+    })
   }
+
+
+  // function handleDelete(id) {
+  //   fetch(`/reviews/${id}`, {
+  //     method: "DELETE",
+  //   }).then((r) => {
+  //     if (r.ok) {
+  //       setReviews((reviews) =>
+  //       reviews.filter((review) => review.id !== id)
+  //       );
+  //     } else {
+  //       r.json().then(err => {
+  //         setReviewErrors(err.errors);
+  //       })
+  //     }
+  //   });
+  // }
 
 
 
@@ -134,7 +145,7 @@ const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rg
 
 
       {reviews.map(review => {
-        return <Review key={review.id} review={review} handleDelete={handleDelete} trail={trail}/>
+        return <Review key={review.id} review={review} setReviews={setReviews}/>
       })}
 
     <Container className="card-container">
@@ -174,6 +185,12 @@ const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rg
           onChange={e => handleOnChange(e)} 
         />
         </Form.Group>
+        {errors ?
+          errors.map(e => {
+          return (<p className='errors' key={e}>{e}</p>)
+          }) :
+          null
+        }
         <Button 
           variant="primary" 
           type="submit" 

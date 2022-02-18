@@ -79,6 +79,15 @@ function SignUpForm({onLogin, setShowLogin}) {
                 onChange={(e) => setImageUrl(e.target.value)}
               />
             </Form.Group>  
+            {errors ?
+              errors.map(e => {
+                if (e === "Password digest can't be blank") {
+                  return null
+                }
+              return (<p className='errors' key={e}>{e}</p>)
+              }) :
+              null
+            }
             <Button type="submit" style={{marginTop: '10px', marginBottom: '2rem'}}>{isLoading ? "Loading..." : "Sign Up"}</Button>
                 <p>Already have an account? </p>
             <Button onClick={() => setShowLogin(true)}>

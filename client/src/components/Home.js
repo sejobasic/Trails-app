@@ -5,14 +5,16 @@ import MultiCarousel from './MultiCarousel';
 import { Form, Button, Container, Carousel, Image } from 'react-bootstrap';
 import logo1  from '../assets/logo4.png';
 import trails1  from '../assets/trails1.jpg';
+import SlickCarousel from './SlickCarousel';
+import { Form, Button, Container, Carousel } from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-function Home({ trails }) {
+function Home({ trails, regex }) {
 
   const carouselItems = trails.map(trail => {
-    const city = trail.city.split(' ').join('');
-    const state = trail.state
-    const name = trail.name.split(' ').join('');
+    const city = regex(trail.city)
+    const state = regex(trail.state)
+    const name = regex(trail.name)
 
     return (
       <Carousel.Item key={trail.id} as={Link} to={`/trails/${state}/${city}/${name}`}>
@@ -28,13 +30,11 @@ function Home({ trails }) {
     )
   })
 
-  // const trailCards = trails.map((trail) => {
-  //   return <TrailCards key={trail.id} trail={trail} />
-  // })
+  const favoritedTrails = trails.filter(trail => trail.favorites > 0)
   
   return (
+    
     <div>
-
       <Carousel className="carousel-container" >
         {carouselItems}
       </Carousel>
@@ -46,8 +46,7 @@ function Home({ trails }) {
       </div>
 
       <Container style={{paddingTop: '5rem'}}>
-      <h2>Local Favorites</h2>
-      <MultiCarousel trails={trails}/>
+      <SlickCarousel trails={favoritedTrails} regex={regex}/>
       </Container>
       <Image 
       src={trails1}
