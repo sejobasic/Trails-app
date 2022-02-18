@@ -15,6 +15,9 @@ return (
     as={Link} 
     to={`/trails/${state}/${city}/${name}`} 
     style={{ 
+      margin: 'auto',
+      marginTop: '1rem',
+      marginBottom: '1rem',
       width: '90%', 
       height: '15.5rem', 
       textDecoration: 'none' 
