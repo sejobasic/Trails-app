@@ -25,9 +25,9 @@ const responsive = {
 };
 
 
-function MultiCarousel({trails}) {
+function MultiCarousel({trails, regex}) {
   const trailCards = trails.map((trail) => {
-    return <TrailCards key={trail.id} trail={trail} />
+    return <TrailCards key={trail.id} trail={trail} regex={regex} />
   })
 
   return (

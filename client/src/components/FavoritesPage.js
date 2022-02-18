@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import TrailCards from './TrailCards'
 
-function FavoritesPage({ user }) {
+function FavoritesPage({ user, regex }) {
   const [trails, setTrails] = useState({});
   const [loaded, setLoaded] = useState(false);
 
@@ -25,7 +25,7 @@ function FavoritesPage({ user }) {
     <h3>{user.username}'s Favorite Trails</h3>
       {trails.map(trail => {
         return (
-          <TrailCards key={trail.id} trail={trail}/>
+          <TrailCards key={trail.id} trail={trail} regex={regex}/>
         )
       })}
     </Container>
