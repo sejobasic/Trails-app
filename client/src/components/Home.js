@@ -24,10 +24,12 @@ function Home({ trails, regex }) {
       </Carousel.Item>
     )
   })
+
+  const favoritedTrails = trails.filter(trail => trail.favorites > 0)
   
   return (
+    
     <div>
-
       <Carousel className="carousel-container" >
         {carouselItems}
       </Carousel>
@@ -39,7 +41,7 @@ function Home({ trails, regex }) {
       </div>
 
       <Container style={{paddingTop: '5rem'}}>
-      <SlickCarousel trails={trails} regex={regex}/>
+      <SlickCarousel trails={favoritedTrails} regex={regex}/>
       </Container>
     </div>
   )

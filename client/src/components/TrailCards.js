@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Card, Container} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TrailCards({trail, regex}) {
+  const [favorited, setFavorited] = useState(false);
+
+  useEffect(() => {
+    
+  })
+
   const city = regex(trail.city)
   const state = regex(trail.state)
   const name = regex(trail.name)
 
+  const route = `/trails/${state}/${city}/${name}`
+
 return (
     <Card 
     className='animated-card'
-    as={Link} 
-    to={`/trails/${state}/${city}/${name}`} 
+    type='button'
+    alt={route}
+    onClick={e => {
+      if (e.target.className !== 'heart') {
+        window.location.href=route
+      }
+    }}
+    // as={Link} 
+    // to={`/trails/${state}/${city}/${name}`} 
     style={{ 
       margin: 'auto',
       marginTop: '1rem',
@@ -22,6 +37,12 @@ return (
       height: '15.5rem', 
       textDecoration: 'none' 
       }}>
+        <div className='heart' onClick={e => setFavorited(!favorited)}>
+          {favorited ?
+            '❤️' :
+            '♡'
+          }
+        </div>
       <Card.Img style={{
           width: '100%', 
           height: '8rem', 
