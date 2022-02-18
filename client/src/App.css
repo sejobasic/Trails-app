@@ -55,9 +55,8 @@ form {
   width: 100px;
 }
 
-.review-container{
+.review-container {
   margin-right: 30px;
-  
 }
 
 .nav-logo img {
@@ -93,8 +92,8 @@ form {
 
 /* The overlay effect - lays on top of the container and over the image */
 .trail-image {
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
   min-height: 100px;
   object-fit: cover;
@@ -156,14 +155,11 @@ form {
   border-radius: 25px;
 } */
 
-
 /* .card:hover { */
 
 .animated-card:hover {
-
-  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
-  /* transform: scale(.05); */
-/* } */
+  transform: scale(1.05);
+}
 
 .heart {
   position: absolute;
@@ -223,9 +219,8 @@ form {
   size: 100px !important;
 }
 
-
 .hero-image {
-  margin-top:80px;
+  margin-top: 80px;
   width: 100%;
   min-height: 100px;
   object-fit: cover;
@@ -254,7 +249,6 @@ form {
   display: inline-block;
   vertical-align: top;
 }
-
 
 /* footer left*/
 
@@ -298,7 +292,6 @@ form {
   margin-bottom: 5px;
 }
 
-
 /* footer center*/
 
 .footer .footer-center {
@@ -341,7 +334,6 @@ form {
   color: #483d8b;
   text-decoration: none;
 }
-
 
 /* footer right*/
 
@@ -402,13 +394,8 @@ form {
   }
 }
 
-
-
-
-
 .slick-prev:before,
 .slick-next:before {
   color: black !important;
   size: 3rem !important;
 }
-

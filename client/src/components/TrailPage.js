@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Button, Col, Card, Row, Container, Form, Image } from 'react-bootstrap';
 import Review from './Review'
 import TrailCards from './TrailCards'
-import ReviewCard from './ReviewCard'
 import { Rating } from 'react-simple-star-rating'
 import '../App.css'
 
@@ -141,7 +140,7 @@ const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rg
 
 
 
-      <iframe src={mapURL} width="100%" height="300" style={{border:0}} allowfullscreen></iframe>
+      <iframe src={mapURL} width="100%" height="300" style={{border:0}} allowFullscreen></iframe>
 
 
       {reviews.map(review => {
