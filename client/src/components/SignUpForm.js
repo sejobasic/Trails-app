@@ -81,6 +81,9 @@ function SignUpForm({onLogin, setShowLogin}) {
             </Form.Group>  
             {errors ?
               errors.map(e => {
+                if (e === "Password digest can't be blank") {
+                  return null
+                }
               return (<p className='errors' key={e}>{e}</p>)
               }) :
               null

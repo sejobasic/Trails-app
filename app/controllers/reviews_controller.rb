@@ -16,8 +16,12 @@ class ReviewsController < ApplicationController
 
   def destroy
     review = find_review
-    review.destroy!
-    head :no_content
+    if review.user === @current_user
+      review.destroy!
+      head :no_content
+    else
+      render json: { errors: ["You thought we forgot? Stop trying to mess with #{review.user.username}'s review!"] }, status: :unauthorized
+    end
 end
 
   private
