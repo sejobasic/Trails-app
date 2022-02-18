@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function TrailCards({trail}) {
-  const city = trail.city.split(' ').join('');
-  const state = trail.state
-  const name = trail.name.split(' ').join('');
+function TrailCards({trail, regex}) {
+  const city = regex(trail.city)
+  const state = regex(trail.state)
+  const name = regex(trail.name)
 
 return (
     <Card 
+    className='animated-card'
     as={Link} 
     to={`/trails/${state}/${city}/${name}`} 
     style={{ 
