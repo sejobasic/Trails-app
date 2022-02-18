@@ -73,6 +73,7 @@ function TrailPage({ trailId }) {
     })
   }
 
+
   function handleDelete(id) {
     fetch(`/reviews/${id}`, {
       method: "DELETE",
@@ -86,10 +87,16 @@ function TrailPage({ trailId }) {
   }
 
 
+
+
 if (!loaded) {
   return <div>loading...</div>
 }
+
+const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rgDA_-8giFeehPgxKsEQSPzk&q=${trail.name},${trail.city},${trail.state}`
+
   return (
+    
     <>
     <div>
       {/* <TrailCards trail={trail}/> */}
@@ -106,6 +113,9 @@ if (!loaded) {
           </Card.ImgOverlay>
         </Card>
       </Container>
+
+
+      <iframe src={mapURL} width="100%" height="300" style={{border:0}} allowfullscreen></iframe>
 
 
       {reviews.map(review => {

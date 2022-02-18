@@ -26,7 +26,7 @@ function NavBar({ user, setUser }) {
           <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
              <Nav.Link as={Link} to={'/'}>Home</Nav.Link>
-             <Nav.Link as={Link} to={'/'}>Favorite Trails</Nav.Link>
+             <Nav.Link as={Link} to={'/favorites'}>Favorite Trails</Nav.Link>
           </Nav>
           </Navbar.Collapse>
           <Navbar.Text id="navbar">
