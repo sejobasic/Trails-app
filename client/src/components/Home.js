@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import TrailCards from './TrailCards'
-import MultiCarousel from './MultiCarousel';
+import SlickCarousel from './SlickCarousel';
 import { Form, Button, Container, Carousel } from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,10 +24,6 @@ function Home({ trails, regex }) {
       </Carousel.Item>
     )
   })
-
-  // const trailCards = trails.map((trail) => {
-  //   return <TrailCards key={trail.id} trail={trail} />
-  // })
   
   return (
     <div>
@@ -44,8 +39,7 @@ function Home({ trails, regex }) {
       </div>
 
       <Container style={{paddingTop: '5rem'}}>
-      <h2>Local Favorites</h2>
-      <MultiCarousel trails={trails} regex={regex}/>
+      <SlickCarousel trails={trails} regex={regex}/>
       </Container>
     </div>
   )
