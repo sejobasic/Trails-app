@@ -4,6 +4,7 @@ import Home from './Home'
 import TrailPage from './TrailPage'
 import FavoritesPage from './FavoritesPage'
 
+
 function Main({ user }) {
     const [trails, setTrails] = useState([]);
 
@@ -16,10 +17,19 @@ function Main({ user }) {
       // .then((items) => console.log(items));
     }, []);
 
+    const regex = (str) => {
+      return(
+        str.replace(/[^a-z0-9\s-]/ig,'')
+        .trim()
+        .replace(/\s+/g, '-')
+        .toLowerCase()
+      )
+    }
+
     const trailPageRoutes = trails.map(trail => {
-      const city = trail.city.split(' ').join('');
-      const state = trail.state
-      const name = trail.name.split(' ').join('');
+      const city = regex(trail.city)
+      const state = regex(trail.state)
+      const name = regex(trail.name)
 
       return (
         <Route
@@ -35,11 +45,11 @@ function Main({ user }) {
       <Routes>
         <Route
           path='/favorites'
-          element={<FavoritesPage user={user}/>}
+          element={<FavoritesPage user={user} regex={regex}/>}
         />
         <Route
           path='/'
-          element={<Home trails={trails}/>}
+          element={<Home trails={trails} regex={regex}/>}
         />
         {trailPageRoutes}
       </Routes>

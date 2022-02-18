@@ -22,7 +22,9 @@ function LoginForm({onLogin, setShowLogin}){
       if (r.ok) {
         r.json().then((user) => onLogin(user));
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => {
+        setErrors(err.errors)
+        });
       }
     });
   }
@@ -54,6 +56,12 @@ function LoginForm({onLogin, setShowLogin}){
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
+          {errors ?
+            errors.map(e => {
+            return (<p className='errors' key={e}>{e}</p>)
+            }) :
+            null
+          }
           <Button color="black" variant="primary" type="submit" style={{marginTop: '10px', marginBottom: '2rem'}}>
               {isLoading ? "Loading..." : "Login"}
           </Button>

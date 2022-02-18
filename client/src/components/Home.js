@@ -5,12 +5,12 @@ import MultiCarousel from './MultiCarousel';
 import { Form, Button, Container, Carousel } from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-function Home({ trails }) {
+function Home({ trails, regex }) {
 
   const carouselItems = trails.map(trail => {
-    const city = trail.city.split(' ').join('');
-    const state = trail.state
-    const name = trail.name.split(' ').join('');
+    const city = regex(trail.city)
+    const state = regex(trail.state)
+    const name = regex(trail.name)
 
     return (
       <Carousel.Item key={trail.id} as={Link} to={`/trails/${state}/${city}/${name}`}>
@@ -45,7 +45,7 @@ function Home({ trails }) {
 
       <Container style={{paddingTop: '5rem'}}>
       <h2>Local Favorites</h2>
-      <MultiCarousel trails={trails}/>
+      <MultiCarousel trails={trails} regex={regex}/>
       </Container>
     </div>
   )

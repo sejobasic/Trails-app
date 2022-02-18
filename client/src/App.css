@@ -11,6 +11,10 @@ form {
   box-shadow: 5px 5px 5px rgba(0.3, 0.3, 0.3, 0.3);
 }
 
+.image-review {
+  max-width: 1000px;
+}
+
 #form-container {
   place-items: center;
   margin-top: 160px;
@@ -24,6 +28,10 @@ form {
   padding-left: 30px;
   padding-right: 30px;
   margin-top: 160px;
+}
+
+.errors {
+  color: red;
 }
 
 #navbar {
@@ -84,11 +92,11 @@ form {
   bottom: 0;
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.5); /* Black see-through */
-  color: #f1f1f1;
+  color: #ffffff;
   width: 100%;
   transition: 0.5s ease;
   opacity: 0;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 20px;
   padding: 20px;
   text-align: center;
@@ -104,6 +112,7 @@ form {
   width: 100%;
   min-height: 600px;
   object-fit: cover;
+  min-height: 600px;
 }
 
 .carousel-item {
@@ -141,7 +150,7 @@ form {
   border-radius: 25px;
 } */
 
-.card:hover {
+.animated-card:hover {
   /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
   transform: scale(1.05);
 }
@@ -152,6 +161,10 @@ form {
 
 .card-text {
   color: gray;
+}
+
+#page-card {
+  color: rgb(255, 255, 255);
 }
 
 /* REVIEW CARDS */
@@ -168,32 +181,13 @@ form {
   margin: auto;
 }
 
-/* unused CSS */
+.delete-btn {
+  margin-right: 500px;
+}
 
-/* .form-container { */
-/* min-height: 100vh;
-  width: 100%;
-  position: relative;
-  background-color: #3d405b;
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0; */
-/* } */
-/* .submit-container{ */
-/* width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0; */
-/* } */
-
-/* .carousel-container {
-  width:auto;
-  text-align:center;
-  padding:60px;
-  object-fit: cover;
-} */
+#delete {
+  margin-left: 820px;
+}
+#delete-2 {
+  margin-left: 10px;
+}

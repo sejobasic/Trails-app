@@ -11,16 +11,22 @@ function TrailPage({ trailId }) {
   const [trail, setTrail] = useState({});
   const [reviews, setReviews] = useState({});
   const [loaded, setLoaded] = useState(false);
+  const [errors, setErrors] = useState([]);
   const [rating, setRating] = useState(0)
   const [form, setForm] = useState({
     summary: '',
     text: '',
-    rating: 5
+    rating: 3
   })
+
 
   const handleRating = (rate: number) => {
     setRating(rate)
     console.log(rate)
+    setForm({
+      ...form, 
+       rating: rate / 20
+    })
   }
 
 
@@ -43,6 +49,10 @@ function TrailPage({ trailId }) {
     setRating(rating)
   }
 
+  // const handleRating = (e) => {
+  //   setRating(rating)
+  // }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newReview = {
@@ -57,12 +67,33 @@ function TrailPage({ trailId }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newReview)
-    })
-    .then(r => r.json())
-    .then(newReview => {
-      setReviews([...reviews, newReview]);
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then(newReview => {
+          setReviews([...reviews, newReview]);
+          setErrors([]);
+        });
+      } else {
+        r.json().then(err => {
+          setErrors(err.errors);
+        });
+      }
     })
   }
+
+
+  function handleDelete(id) {
+    fetch(`/reviews/${id}`, {
+      method: "DELETE",
+    }).then((r) => {
+      if (r.ok) {
+        setReviews((reviews) =>
+        reviews.filter((review) => review.id !== id)
+        );
+      }
+    });
+  }
+
 
 
 
@@ -82,9 +113,9 @@ const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rg
         <Card className="bg-dark text-white">
           <Card.Img className="image-review" src={trail.image_url} alt="Card image" />
           <Card.ImgOverlay className="overlay" >
-            <Card.Title>{trail.name}</Card.Title>
-            <Card.Text>{trail.city}, {trail.state}</Card.Text>
-            <Card.Text>
+            <Card.Title id="page-card">{trail.name}</Card.Title>
+            <Card.Text id="page-card">{trail.city}, {trail.state}</Card.Text>
+            <Card.Text id="page-card">
             {trail.description}
             </Card.Text>
           </Card.ImgOverlay>
@@ -96,7 +127,7 @@ const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rg
 
 
       {reviews.map(review => {
-        return <Review key={review.id} review={review} trail={trail}/>
+        return <Review key={review.id} review={review} handleDelete={handleDelete} trail={trail}/>
       })}
 
     <Container className="card-container">
@@ -127,15 +158,21 @@ const mapURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAnKa-88F4rg
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Rating 
           onClick={handleRating} 
-          // ratingValue={rating} 
+          ratingValue={rating} 
           initialValue={0}
           fillColor={"#483d8b"}
           type="number" 
           name="rating" 
           value={form.rating} 
-          onChange={e => handleOnChange(e)}
+          onChange={e => handleOnChange(e)} 
         />
         </Form.Group>
+        {errors ?
+          errors.map(e => {
+          return (<p className='errors' key={e}>{e}</p>)
+          }) :
+          null
+        }
         <Button 
           variant="primary" 
           type="submit" 
