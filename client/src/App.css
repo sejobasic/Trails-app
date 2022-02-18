@@ -92,9 +92,7 @@ form {
   font-size: 20px;
   padding: 20px;
   text-align: center;
-
 }
-
 
 /* When you mouse over the container, fade in the overlay title */
 .container:hover .overlay {
@@ -104,6 +102,7 @@ form {
 /* CAROUSEL */
 .carousel img {
   width: 100%;
+  min-height: 600px;
   object-fit: cover;
 }
 
@@ -167,7 +166,6 @@ form {
 /* SEARCHBAR */
 #searchbar {
   margin: auto;
-
 }
 
 /* unused CSS */
